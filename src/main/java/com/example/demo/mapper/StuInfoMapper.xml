@@ -1,0 +1,39 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="com.example.demo.mapper.StuInfoMapper">
+    <resultMap id="BaseResultMap" type="com.example.demo.bean.StuInfo">
+        <id column="id" property="id"/>
+        <result column="ksh" property="ksh"/>
+        <result column="xm" property="xm"/>
+        <result column="sfzh" property="sfzh"/>
+        <result column="xb" property="xb"/>
+        <result column="zy" property="zy"/>
+        <result column="xy" property="xy"/>
+        <result column="sfmc" property="sfmc"/>
+        <result column="state" property="state"/>
+    </resultMap>
+
+    <select id="loadStudent" resultMap="BaseResultMap">
+        select * from stu_info where xm=#{xm} or ksh=#{ksh} or sfzh=#{sfzh}
+<!--        <where>-->
+<!--            <choose>-->
+<!--                <when test="ksh != null and ksh !=''">-->
+<!--                    and ksh like concat('%', #{ksh}, '%')-->
+<!--                </when>-->
+<!--                <when test="xm != null and xm !=''">-->
+<!--                    and xm like concat('%', #{xm}, '%')-->
+<!--                </when>-->
+<!--                <when test="sfzh != null and sfzh !=''">-->
+<!--                    and sfzh like concat('%', #{sfzh}, '%')-->
+<!--                </when>-->
+<!--            </choose>-->
+<!--        </where>-->
+
+
+    </select>
+
+
+</mapper>

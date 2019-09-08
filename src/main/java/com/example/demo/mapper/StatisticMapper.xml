@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="com.example.demo.mapper.StatisticMapper">
+    <resultMap id="BaseResultMap" type="com.example.demo.bean.Statistic">
+        <id column="id" property="id"/>
+        <result column="lqrs" property="lqrs"/>
+        <result column="bdrs" property="bdrs"/>
+        <result column="lqnv" property="lqnv"/>
+        <result column="bdnv" property="bdnv"/>
+        <result column="lqnan" property="lqnan"/>
+        <result column="bdnan" property="bdnan"/>
+    </resultMap>
+
+    <insert id="setStatisticData">
+        INSERT INTO statistic(lqrs, bdrs, lqnv, bdnv, lqnan, bdnan) VALUES((select count(*) from stu_info),
+                                                                           (select count(*) from stu_info where state=1),
+                                                                           (select count(*) from stu_info where xb="女"),
+                                                                           (select count(*) from stu_info where state=1 and xb="女"),
+                                                                           (select count(*) from stu_info where xb="男"),
+                                                                           (select count(*) from stu_info where state=1 and xb="男"))
+    </insert>
+
+    <select id="getStatisticData" resultMap="BaseResultMap">
+        select * from statistic order by id DESC LIMIT 1
+    </select>
+
+
+
+</mapper>
