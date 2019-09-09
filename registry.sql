@@ -1,21 +1,32 @@
 /*
  Navicat Premium Data Transfer
 
- Source Server         : mysql56
+ Source Server         : localhost_3306
  Source Server Type    : MySQL
- Source Server Version : 50624
+ Source Server Version : 50727
  Source Host           : localhost:3306
  Source Schema         : registry
 
  Target Server Type    : MySQL
- Target Server Version : 50624
+ Target Server Version : 50727
  File Encoding         : 65001
 
- Date: 08/09/2019 23:26:47
+ Date: 09/09/2019 16:40:00
 */
 
 SET NAMES utf8mb4;
 SET FOREIGN_KEY_CHECKS = 0;
+
+-- ----------------------------
+-- Table structure for province
+-- ----------------------------
+DROP TABLE IF EXISTS `province`;
+CREATE TABLE `province`  (
+  `id` bigint(20) NOT NULL AUTO_INCREMENT,
+  `province_name` varchar(10) CHARACTER SET utf8 COLLATE utf8_general_ci NULL DEFAULT NULL,
+  `province_count` int(10) NULL DEFAULT NULL,
+  PRIMARY KEY (`id`) USING BTREE
+) ENGINE = InnoDB AUTO_INCREMENT = 33 CHARACTER SET = utf8 COLLATE = utf8_general_ci ROW_FORMAT = Dynamic;
 
 -- ----------------------------
 -- Table structure for role
@@ -1284,17 +1295,17 @@ CREATE TABLE `user`  (
   `id` int(11) NOT NULL AUTO_INCREMENT,
   `username` varchar(32) CHARACTER SET utf8 COLLATE utf8_general_ci NULL DEFAULT NULL,
   `password` varchar(255) CHARACTER SET utf8 COLLATE utf8_general_ci NULL DEFAULT NULL,
-  `enable` tinyint(1) NULL DEFAULT 1,
+  `enabled` tinyint(1) NULL DEFAULT 1,
   `locked` tinyint(1) NULL DEFAULT 0,
   PRIMARY KEY (`id`) USING BTREE
-) ENGINE = InnoDB AUTO_INCREMENT = 4 CHARACTER SET = utf8 COLLATE = utf8_general_ci ROW_FORMAT = Compact;
+) ENGINE = InnoDB AUTO_INCREMENT = 4 CHARACTER SET = utf8 COLLATE = utf8_general_ci ROW_FORMAT = Dynamic;
 
 -- ----------------------------
 -- Records of user
 -- ----------------------------
-INSERT INTO `user` VALUES (1, 'dba', '$2a$10$WM6VvzibEjSjqS63sNUeFuPcxM5udGcAuO5mxAl2Hd80WBuZzKhNO', 0, 0);
-INSERT INTO `user` VALUES (2, 'admin', '$2a$10$WM6VvzibEjSjqS63sNUeFuPcxM5udGcAuO5mxAl2Hd80WBuZzKhNO', 1, 0);
-INSERT INTO `user` VALUES (3, 'user', '$2a$10$WM6VvzibEjSjqS63sNUeFuPcxM5udGcAuO5mxAl2Hd80WBuZzKhNO', 1, 0);
+INSERT INTO `user` VALUES (1, 'root', '$2a$10$W/4U5.AKvEnd3x7XGD/Pye17L2aUzjVGH.8zshnUOx/AubTxmeqr2', 1, 0);
+INSERT INTO `user` VALUES (2, 'admin', '$2a$10$XnFvQ52TIg87wTtAg2wrR.JkAOGXpJhLZfHAom2bi2yXmUApgO1jq', 1, 0);
+INSERT INTO `user` VALUES (3, 'huang', '$2a$10$jLbYvCU4gYLhxS4k/u/vf.wrQNcsq9qvrQOsTntnPsMPkRh/j1B3m', 1, 0);
 
 -- ----------------------------
 -- Table structure for user_role
@@ -1305,6 +1316,16 @@ CREATE TABLE `user_role`  (
   `uid` int(20) NULL DEFAULT NULL,
   `rid` int(20) NULL DEFAULT NULL,
   PRIMARY KEY (`id`) USING BTREE
-) ENGINE = InnoDB AUTO_INCREMENT = 1 CHARACTER SET = utf8 COLLATE = utf8_general_ci ROW_FORMAT = Compact;
+) ENGINE = InnoDB AUTO_INCREMENT = 7 CHARACTER SET = utf8 COLLATE = utf8_general_ci ROW_FORMAT = Compact;
+
+-- ----------------------------
+-- Records of user_role
+-- ----------------------------
+INSERT INTO `user_role` VALUES (1, 1, 1);
+INSERT INTO `user_role` VALUES (2, 1, 2);
+INSERT INTO `user_role` VALUES (3, 2, 2);
+INSERT INTO `user_role` VALUES (4, 3, 3);
+INSERT INTO `user_role` VALUES (5, 1, 3);
+INSERT INTO `user_role` VALUES (6, 2, 3);
 
 SET FOREIGN_KEY_CHECKS = 1;

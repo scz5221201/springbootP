@@ -19,9 +19,17 @@ public class StuInfoController {
 
     }
 
-    @GetMapping("/hello")
+    @GetMapping("/dba/hello")
+    public String dba() {
+        return "hello dba";
+    }
+    @GetMapping("/admin/hello")
+    public String admin() {
+        return "hello admin";
+    }
+    @GetMapping("/user/hello")
     public String hello() {
-        return "hello";
+        return "hello user";
     }
 
 }
