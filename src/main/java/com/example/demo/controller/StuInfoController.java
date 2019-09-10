@@ -14,7 +14,7 @@ public class StuInfoController {
     StuInfoService stuInfoService;
 
     @RequestMapping(value = "/check_stu", method = RequestMethod.GET)
-    public List<StuInfo> getStuInfo(String ksh, String xm, String sfzh) {
+    public List<StuInfo> getStuInfo(@PathVariable(value = "ksh") String ksh,@PathVariable(value = "xm") String xm,@PathVariable(value = "sfzh") String sfzh) {
         return stuInfoService.getStuInfo(ksh, xm, sfzh);
 
     }
